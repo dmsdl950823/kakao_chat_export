@@ -6,19 +6,28 @@ export default function Home () {
     reader.readAsText(file)
     reader.onload = () => {
       // 콜백지옥 빠져나가기 ㄷㄷ
+
+      const showComeOut = true // 들어왔습니다/나갔습니다
+
       const split = data => data.split(',')
 
-      // const raw = reader.result.split('\n')
-      const raw = reader.result
-      const enter = raw.indexOf('\n')
-      const columns = split(raw.slice(0, enter))
-      const test = raw.slice(enter)
-      // const columns = split(raw[0])
+      const raw = reader.result.split('\n')
+      const columns = raw.splice(0, 1)
+
+      const chats = raw.map(chat => {
+        const result = split(chat.replace(/"/g, ''))
+
+        // 들어왔습니다/나갔습니다 사용 안하기
+        if (showComeOut)
+
+        return { createTime: result[0], name: result[1], content: result[2] }
+      })
 
 
-      // console.log(reader.result.split('\n'))
-      console.log(columns)
-      console.log(test)
+
+
+      console.log(chats)
+      // console.log(raw, columns)
       // columns.split
 
     }
