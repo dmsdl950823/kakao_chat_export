@@ -15,12 +15,9 @@ export default function ChatList ({ value }: AppProps) {
   // const value = '웨구에구에ㅜ에구게ㅜ게우개ㅔㄴ무렝리'
 
   const textarea = (
-    <div className="-list">
-      <span className="name">Name</span>
-
+    <div className="-chat">
       <textarea
         style={ setStyle() }
-        className="-chat"
         value={ value }
         readOnly
       />

@@ -7,11 +7,30 @@
 
 .-list {
   border: 1px solid red;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.-image {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  border-radius: 5px;
+  background-color: #CCC;
+}
+
+.name {
+  display: block;
+  line-height: 25px;
 }
 
 .-list .-chat {
-  border: none;
-  resize: none;
   display: inline-block;
   padding: 10px;
   background-color: #FFF;
@@ -19,4 +38,26 @@
   border-radius: 5px;
   white-space: pre-wrap;
   height: auto;
+  margin-left: 30px;
+  position: relative;
+  border: 1px solid red;
+}
+
+.-list .-chat:before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: -20px;
+  width: 20px;
+  height: 5px;
+  border-left: 8px solid transparent;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #FFF;
+  box-sizing: border-box;
+}
+
+textarea {
+  border: none;
+  resize: none;
 }

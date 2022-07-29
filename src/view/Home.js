@@ -7,6 +7,11 @@ export default function Home () {
   const listItems = numbers.map((number) => {
     return (
       <li className="-list" key={number.toString()}>
+        <div className="-profile">
+          <div className="-image"></div>
+          <span className="name">Name</span>
+        </div>
+
         <ChatList value="안녕안녕안녕안녕안ㅇㄹ마ㅣㅇ널;ㄴ마ㅣㅁㄴㅇ라ㅣㅁㄴㅇ러;마널;맞덜;ㅣ만얾; ㅏㄴ러미ㅏㅁㄴ아ㅣ럼;ㅇ나ㅣ러 <br>dkssud" />
       </li>
     )

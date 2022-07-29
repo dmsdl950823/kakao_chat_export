@@ -1,8 +1,5 @@
 import React from 'react'
 
-// type raw = string | number[] | null
-// type StringArray = Array<string>
-
 export default function Input () {
   const changeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input: HTMLInputElement | null = e.target
