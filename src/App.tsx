@@ -4,7 +4,7 @@ import './App.css'
 import './style/reset.css'
 import Home from './view/Home.js'
 
-function App () {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Home />
