@@ -1,3 +1,4 @@
+import React from 'react'
 import ChatList from '../component/ChatList'
 import Input from '../component/Input'
 
@@ -14,7 +15,7 @@ export default function Home () {
     <div>
       <ul className="chart-list">
         { listItems }
-        
+
       </ul>
       <Input></Input>
     </div>

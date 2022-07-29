@@ -6,7 +6,9 @@
 }
 
 .-list {
+  border: 1px solid red;
 }
+
 .-list .-chat {
   border: none;
   resize: none;

@@ -1,5 +1,6 @@
+import React from 'react'
+
 export default function Input () {
-  
   const changeEvent = (e) => {
     const file = e.target.files[0]
 
@@ -25,13 +26,13 @@ export default function Input () {
     // 모든 csv 데이터 순회
     for (let i = 0; i < raw.length; i++) {
       const chat = raw[i]
-     
+
       const string = split(chat.replace(/"/g, ''))
       const content = string[2].replace(/\n/g, '&#13;')
-      const object = { createTime: '20' + string[0], name: string[1], content, isMe: false}
+      const object = { createTime: '20' + string[0], name: string[1], content, isMe: false }
       const test = /들어왔습니다|나갔습니다/g.test(object.content)
       const idTest = new RegExp(myId) // 내 아이디와 일치하는 내용 확인
-      
+
       // '들어왔습니다/나갔습니다' 사용 안하기
       // console.log(test, test ? object.content : '')
       if (!showComeOut && test) continue
@@ -43,11 +44,8 @@ export default function Input () {
       result.push(object)
     }
 
-
     console.log(result)
-
   }
 
   return <input type="file" onChange={changeEvent}/>
-  
 }
