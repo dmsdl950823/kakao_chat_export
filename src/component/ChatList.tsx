@@ -7,12 +7,8 @@ type AppProps = {
 
 export default function ChatList ({ value }: AppProps) {
   const setStyle = () => {
-    // console.log(textarea)
-
     return { height: '200px' }
   }
-
-  // const value = '웨구에구에ㅜ에구게ㅜ게우개ㅔㄴ무렝리'
 
   const textarea = (
     <div className="-chat">
@@ -24,5 +20,14 @@ export default function ChatList ({ value }: AppProps) {
     </div>
   )
 
-  return textarea
+  return (
+    <li className="-list">
+      <div className="-image"></div>
+
+      <div className="-profile">
+        <span className="name">Name</span>
+        { textarea }
+      </div>
+    </li>
+  )
 }
