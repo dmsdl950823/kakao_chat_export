@@ -18,7 +18,7 @@ export default function Home () {
         key={id}
         me={me}
         name={name}
-        value={content}
+        content={content}
       />
     )
   })

@@ -5,9 +5,12 @@
 }
 
 .-list {
-  margin-left: 20px;
   font-size: 14px;
   display: flex;
+}
+
+.-list.-me {
+  justify-content: flex-end;
 }
 
 .-profile {
@@ -31,6 +34,10 @@
   line-height: 25px;
 }
 
+.-me .name {
+  text-align: right;
+}
+
 .-list .-chat {
   display: inline-block;
   padding: 15px;
@@ -42,6 +49,9 @@
   position: relative;
 }
 
+.-me .-chat {
+  background-color: rgb(255, 203, 124);
+}
 /* .-list .-chat:before {
   content: '';
   position: absolute;

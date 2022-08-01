@@ -16,7 +16,6 @@ export default function ChatList ({ name, content, me }: AppProps) {
   const setListType = (isMe: boolean) => {
     return {
       className: isMe ? '-list -me' : '-list',
-      name: isMe ? null : <span className="name">{name}</span>,
       image: isMe ? null : <div className="-image"></div>
     }
   }
@@ -26,7 +25,8 @@ export default function ChatList ({ name, content, me }: AppProps) {
         { setListType(me).image }
 
       <div className="-profile">
-        { setListType(me).name }
+        {/* { setListType(me).name } */}
+        <span className="name">{name}</span>
 
         <div className="-chat">
           <textarea
