@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/chartlist.css'
+import '../style/chartlist.scss'
 
 type AppProps = {
   name: string

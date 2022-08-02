@@ -1,5 +1,5 @@
 import React from 'react'
-import '../style/input.css'
+import '../style/input.scss'
 
 export default function Input () {
   const changeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
