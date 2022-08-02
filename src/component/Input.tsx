@@ -1,4 +1,5 @@
 import React from 'react'
+import '../style/input.css'
 
 export default function Input () {
   const changeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,5 +56,17 @@ export default function Input () {
     console.log(result)
   }
 
-  return <input type="file" onChange={changeEvent}/>
+  return (
+    <div className="kakao-file-upload">
+      <label className="input-file-button" htmlFor="input-file">
+        업로드
+      </label>
+
+      <input
+        type="file"
+        id="input-file"
+        style={{ display: 'none' }}
+        onChange={changeEvent}/>
+    </div>
+  )
 }

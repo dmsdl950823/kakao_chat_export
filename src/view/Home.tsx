@@ -1,14 +1,16 @@
 import React from 'react'
-import Input from '../component/Input'
 import { Link } from 'react-router-dom'
+
+import '../style/home.css'
+import Input from '../component/Input'
 
 export default function Home () {
   return (
-    <div>
-      <Input />
-      홈홈
+    <div className="home">
+      <h1>TEST</h1>
 
-      <Link to="/about"><button> next </button></Link>
+      <Input />
+      <Link to="option"><button> next </button></Link>
     </div>
   )
 }
