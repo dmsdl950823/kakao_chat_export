@@ -4,16 +4,16 @@ import '../style/chartlist.css'
 type AppProps = {
   name: string
   content: string
-  me: boolean
+  me: boolean | undefined
 }
 
-export default function ChatList ({ name, content, me }: AppProps) {
+export default function Chat ({ name, content, me }: AppProps) {
   const setStyle = () => {
     return { height: '200px' }
   }
 
   // 채팅이 나인지 확인
-  const setListType = (isMe: boolean) => {
+  const setListType = (isMe: boolean | undefined) => {
     return {
       className: isMe ? '-list -me' : '-list',
       image: isMe ? null : <div className="-image"></div>

@@ -1,6 +1,5 @@
 import React from 'react'
-import ChatList from '../component/ChatList'
-// import Input from '../component/Input'
+import Chat from '../component/Chat'
 
 export default function Home () {
   const numbers = [
@@ -14,7 +13,7 @@ export default function Home () {
 
   const listItems = numbers.map(({ name, content, me, id }) => {
     return (
-      <ChatList
+      <Chat
         key={id}
         me={me}
         name={name}
