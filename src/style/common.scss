@@ -7,12 +7,15 @@ button {
   border: none;
 
   &:disabled {
-    border: 1px solid red;
+    color: #91a6a5;
+    background-color: #618d8a;
+    cursor: not-allowed;
   }
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 10rem;
+  border: 1px solid red;
 }
 
 .home {

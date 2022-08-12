@@ -1,0 +1,65 @@
+$folder-back: rgb(239, 199, 150);
+$folder-front: rgb(255, 233, 179);
+
+.folder {
+  width: 60%;
+  position: relative;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &-back, &-front {
+    position: absolute;
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  &-paper {
+    position: absolute;
+    width: 130px;
+    height: 100px;
+    border-radius: 5px;
+    bottom: 35px;
+    background-color: #FFF;
+
+    &.-a {
+      right: 40px;
+      transform: rotate(-4deg);
+      border: 1px solid rgb(232, 236, 235);
+    }
+    &.-b {
+      right: 30px;
+      transform: rotate(8deg);
+      border: 1px solid #d6dcdb;
+    }
+    &.-c {
+      right: 10px;
+      transform: rotate(12deg);
+      border: 1px solid #bcc8c6;
+    }
+  }
+  
+  &-back {
+    height: 70%;
+    background-color: $folder-back;
+    transform: skewX(9deg);
+    bottom: 0; right: 6px;
+  }
+  &-front {
+    height: 80%;
+    background-color: $folder-front;
+    transform: skewX(-9deg);
+    bottom: -1px; right: -8px;
+
+    &::before {
+      content: '';
+      width: 30%;
+      position: absolute;
+      border-radius: 15px 15px 0 0;
+      height: 30%;
+      background-color: $folder-front;
+      top: -10%; left: 0;
+    }
+  }
+}

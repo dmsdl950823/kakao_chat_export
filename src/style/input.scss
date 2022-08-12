@@ -1,7 +1,54 @@
 .kakao-file-upload {
-  line-height: 50px;
   text-align: center;
+  margin: 1vh;
 }
+
+.upload-file-button {
+  border-radius: 15px;
+  border: 2px dashed #5ebdb7;
+  padding: 10px 25px;
+  width: 300px;
+  height: 20vh;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  transition: 0.3s ease background-color;
+  position: relative;
+
+  &:hover {
+    background-color: #e3f6f5;
+  }
+
+  &-name {
+    display: block;
+    color: #3ba09b;
+    height: 10vh;
+    line-height: 10vh;
+    width: 200px;
+    padding: 10px 25px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 15px;
+  }
+
+  // &.-uploaded {
+  //   border: 2px solid rgb(198, 222, 221);
+  //   background-color: #f5fffe;
+
+  //   .upload-file-button-name {
+  //     position: absolute;
+  //     top: -55px; right: calc(50% - 150px);
+  //     background-color: #FFF;
+  //     border: 1px solid #bcc8c6;
+  //     border-radius: 5px;
+  //   }
+  // }
+}
+
 
 .input-file-button {  
   padding: 10px 25px;
