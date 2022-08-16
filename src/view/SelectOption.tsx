@@ -1,48 +1,45 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import '../style/option.scss'
 
-import { setData } from '../store/files'
-// import store from '../store'
+import Checkbox from '../component/Checkbox'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleShowComeOut, toggleUseMyId, setMyId } from '../store/option'
 
-// ---
-// console.log('Initial state: ', store.getState())
-
-export function Test () {
+export default function SelectOption () {
   // eslint-disable-next-line
-  const file = useSelector((state: any) => state.files.data)
+  const { showComeOut, useMyId, myId } = useSelector((state: any) => ({ showComeOut: state.options.showComeOut, useMyId: state.options.useMyId, myId: state.options.myId }))
   const dispatch = useDispatch()
+  // console.log(showComeOut, useMyId, myId, '심신..')
 
-  /**
-   * 전역 store 로 저장
-   */
-  const action = () => {
-    dispatch(setData(['테스티']))
-    // console.log('After state ', store.getState())
-  }
-
-  return (
-    <>
-      <h1>PIZZA 목록</h1>
-
-      {
-        file.map((excel: string, index: number) => (
-          <div key={excel + index}>{excel}</div>
-        ))
-      }
-
-      <button onClick={action}>Add Peperoni</button>
-    </>
-  )
-}
-
-export default function App () {
   return (
     <div className="home">
-      <Test />
+      <h1>카카오톡 대화 변환기</h1>
+      <h2>옵션 선택</h2>
 
-      <Link to="/"><button> before </button></Link>
-      <Link to="/chat"><button disabled> chat </button></Link>
+      <div className="option-wrap">
+        <div>
+          <Checkbox
+            label="입장 / 퇴장 여부도 포함할래요"
+            onChange={ (e: React.ChangeEvent<HTMLInputElement>) => dispatch(toggleShowComeOut(e.target.checked)) }
+          />
+          <Checkbox
+            label="'나' 를 구분할래요"
+            onChange={ (e: React.ChangeEvent<HTMLInputElement>) => dispatch(toggleUseMyId(e.target.checked)) }
+          />
+
+          <input
+            className="use-my-id"
+            placeholder="나의 닉네임을 알려주세요"
+            onChange={ (e: React.ChangeEvent<HTMLInputElement>) => dispatch(setMyId(e.target.value)) }
+          />
+        </div>
+      </div>
+
+      <div className="">
+        <Link to="/"><button> ◀️ 파일선택 </button></Link>
+        <Link to="/chat"><button> 변환하기 ▶️ </button></Link>
+      </div>
     </div>
   )
 }

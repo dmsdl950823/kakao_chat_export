@@ -6,7 +6,7 @@ import '../style/input.scss'
 import { setCSVFile, setCSVFileName } from '../store/files'
 
 export default function Input () {
-  //
+  // eslint-disable-next-line
   const name = useSelector((state: any) => state.files.name)
   const dispatch = useDispatch()
 

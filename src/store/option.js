@@ -37,5 +37,5 @@ export const optionSlice = createSlice({
   }
 })
 
-export const { setFiles } = optionSlice.actions
+export const { toggleShowComeOut, toggleUseMyId, setMyId } = optionSlice.actions
 export default optionSlice.reducer
