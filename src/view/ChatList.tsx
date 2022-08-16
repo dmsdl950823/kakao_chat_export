@@ -15,6 +15,7 @@ type ChatType = {
   content: string
   createTime: string
   isMe?: boolean | undefined
+  isComeOutText?: boolean | undefined
 }
 
 /**
@@ -34,12 +35,14 @@ const setChatList = ({ showComeOut, useMyId, myId, chats }: Ingredient) => {
 
     const string = split(chat.replace(/"/g, ''))
     const content = string[2].replace(/\n/g, '&#13;')
-    const object = { id: i, createTime: '20' + string[0], name: string[1], content, isMe: false }
+    const object: ChatType = { id: i, createTime: '20' + string[0], name: string[1], content, isMe: false }
     const showComeOutText = /들어왔습니다|나갔습니다/g.test(object.content)
     const idTest = new RegExp(String(myId)) // 내 아이디와 일치하는 내용 확인
 
-    // '들어왔습니다/나갔습니다' 사용 안하기
+    // '들어왔습니다/나갔습니다' 사용 안하기 (넘어가기)
     if (!showComeOut && showComeOutText) continue
+    // 사용해서 해당할 때만 true 로 설정하기
+    if (showComeOut && showComeOutText) object.isComeOutText = true
 
     // 사용자 (나) 를 사용할 경우, 일치하는 아이디를 확인하기
     if (useMyId && idTest.test(object.name)) object.isMe = true
@@ -62,7 +65,6 @@ export default function Home () {
 
   const chats = typeof raw === 'string' ? raw.split('"\n20')?.splice(1) : raw // column 제거
   const numbers = setChatList({ showComeOut, useMyId, myId, chats })
-  // const dispatch = useDispatch()
 
   const listItems = numbers.map((data: ChatType) => {
     return (
@@ -79,7 +81,6 @@ export default function Home () {
         { listItems }
 
       </ul>
-      {/* <Input></Input> */}
     </div>
   )
 }

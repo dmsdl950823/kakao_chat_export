@@ -7,10 +7,11 @@ type AppProps = {
   content: string
   createTime: string
   isMe?: boolean | undefined
+  isComeOutText?: boolean | undefined
 }
 
-export default function Chat ({ item }: {item: AppProps}) {
-  const { name, content, isMe, id } = item
+export default function Chat ({ item }: { item: AppProps }) {
+  const { name, content, isMe, id, isComeOutText } = item
 
   // 채팅이 나인지 확인
   const setListType = (isMe: boolean | undefined) => {
@@ -58,7 +59,8 @@ export default function Chat ({ item }: {item: AppProps}) {
         htmlFor={`ID_${id}`}
         className={ setListType(isMe).checkboxWrap }
       >
-        <List />
+        { isComeOutText ? (<li className="-comeout"> <span>{ content }</span> </li>) : <List /> }
+
         <input
           type="checkbox"
           id={`ID_${id}`}
