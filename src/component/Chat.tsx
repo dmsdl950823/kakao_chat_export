@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import '../style/chartlist.scss'
 
 type AppProps = {
+  id: number
   name: string
   content: string
-  me?: boolean | undefined
-  id: number
+  createTime: string
+  isMe?: boolean | undefined
 }
 
-export default function Chat ({ item }: { item: AppProps }) {
-  const { name, content, me, id } = item
+export default function Chat ({ item }: {item: AppProps}) {
+  const { name, content, isMe, id } = item
 
   // 채팅이 나인지 확인
   const setListType = (isMe: boolean | undefined) => {
@@ -29,8 +30,8 @@ export default function Chat ({ item }: { item: AppProps }) {
   }
 
   const List = () => (
-    <li className={ setListType(me).className }>
-        { setListType(me).image }
+    <li className={ setListType(isMe).className }>
+        { setListType(isMe).image }
         {checked}
 
       <div className="-profile">
@@ -43,7 +44,7 @@ export default function Chat ({ item }: { item: AppProps }) {
             readOnly
           />
 
-          <div className={ setListType(me).checkbox }>
+          <div className={ setListType(isMe).checkbox }>
           </div>
         </div>
         {/* /. 채팅 */}
@@ -55,7 +56,7 @@ export default function Chat ({ item }: { item: AppProps }) {
     <>
       <label
         htmlFor={`ID_${id}`}
-        className={ setListType(me).checkboxWrap }
+        className={ setListType(isMe).checkboxWrap }
       >
         <List />
         <input

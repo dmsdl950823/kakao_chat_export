@@ -21,17 +21,17 @@ export default function SelectOption () {
         <div>
           <Checkbox
             label="입장 / 퇴장 여부도 포함할래요"
-            onChange={ (e: React.ChangeEvent<HTMLInputElement>) => dispatch(toggleShowComeOut(e.target.checked)) }
+            onChange={ e => dispatch(toggleShowComeOut(e.target.checked)) }
           />
           <Checkbox
             label="'나' 를 구분할래요"
-            onChange={ (e: React.ChangeEvent<HTMLInputElement>) => dispatch(toggleUseMyId(e.target.checked)) }
+            onChange={ e => dispatch(toggleUseMyId(e.target.checked)) }
           />
 
           <input
             className="use-my-id"
             placeholder="나의 닉네임을 알려주세요"
-            onChange={ (e: React.ChangeEvent<HTMLInputElement>) => dispatch(setMyId(e.target.value)) }
+            onChange={ e => dispatch(setMyId(e.target.value)) }
           />
         </div>
       </div>
