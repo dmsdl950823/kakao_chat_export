@@ -4,7 +4,7 @@ $folder-front: rgb(255, 233, 179);
 .folder {
   width: 60%;
   position: relative;
-  height: 80%;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,5 +61,19 @@ $folder-front: rgb(255, 233, 179);
       background-color: $folder-front;
       top: -10%; left: 0;
     }
+  }
+
+  &-name {
+    position: absolute;
+    top: 100%;
+    margin-top: 10%;
+    font-size: 0.8em;
+    color: #3ba09b;
+    width: 200px;
+    padding: 10px 25px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

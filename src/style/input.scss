@@ -1,6 +1,6 @@
 .kakao-file-upload {
   text-align: center;
-  margin: 1vh;
+  margin: 3vh;
 }
 
 .upload-file-button {
@@ -8,7 +8,7 @@
   border: 2px dashed #5ebdb7;
   padding: 10px 25px;
   width: 300px;
-  height: 20vh;
+  height: 30vh;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -34,19 +34,6 @@
     white-space: nowrap;
     border-radius: 15px;
   }
-
-  // &.-uploaded {
-  //   border: 2px solid rgb(198, 222, 221);
-  //   background-color: #f5fffe;
-
-  //   .upload-file-button-name {
-  //     position: absolute;
-  //     top: -55px; right: calc(50% - 150px);
-  //     background-color: #FFF;
-  //     border: 1px solid #bcc8c6;
-  //     border-radius: 5px;
-  //   }
-  // }
 }
 
 

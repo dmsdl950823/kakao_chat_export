@@ -1,6 +1,7 @@
 import React from 'react'
 
-import './style/common.scss'
+// import './style/common.scss'
+import './style/common.css'
 import './style/reset.css'
 import Routes from './routes'
 

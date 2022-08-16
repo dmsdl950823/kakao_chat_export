@@ -1,0 +1,33 @@
+html, body {
+  color: #333;
+  font-size: 14px;
+}
+
+button {  
+  padding: 10px 25px;
+  background-color:#5ebdb7;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+
+button:disabled {
+  color: #91a6a5;
+  background-color: #618d8a;
+  cursor: not-allowed;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}

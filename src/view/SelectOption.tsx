@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import '../style/common.scss'
 
 import { setData } from '../store/files'
 // import store from '../store'
