@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Chat from '../component/Chat'
 import { useSelector } from 'react-redux'
+import { useNavigate, useLocation } from 'react-router'
 
 type Ingredient = {
   showComeOut: boolean
@@ -74,6 +75,16 @@ export default function Home () {
       />
     )
   })
+
+  // 데이터가 없으면 다시 초기화
+  const navigate = useNavigate()
+  const { state } = useLocation()
+  useEffect(() => {
+    if (chats === null) {
+      // alert('데이터가 없습니다. 초기화면으로 돌아갑니다.')
+      navigate('/', { replace: true })
+    }
+  }, [state])
 
   return (
     <div>

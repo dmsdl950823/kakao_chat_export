@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+import React from 'react'
 import '../style/chartlist.scss'
 
 type AppProps = {
@@ -24,16 +25,15 @@ export default function Chat ({ item }: { item: AppProps }) {
   }
 
   // 'check' 여부
-  const [checked, setChecked] = useState<boolean>(false)
-  const onChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked)
-    // console.log(e.target.checked, '진자 붕신')
-  }
+  // const [checked, setChecked] = useState<boolean>(false)
+  // const onChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setChecked(e.target.checked)
+  //   // console.log(e.target.checked, '진자 붕신')
+  // }
 
   const List = () => (
     <li className={ setListType(isMe).className }>
         { setListType(isMe).image }
-        {checked}
 
       <div className="-profile">
         <span className="name">{name}</span>
@@ -61,11 +61,11 @@ export default function Chat ({ item }: { item: AppProps }) {
       >
         { isComeOutText ? (<li className="-comeout"> <span>{ content }</span> </li>) : <List /> }
 
-        <input
+        {/* <input
           type="checkbox"
           id={`ID_${id}`}
           onChange={e => onChecked(e)}
-        />
+        /> */}
         {/* style={{ display: 'none' }} */}
       </label>
     </>
