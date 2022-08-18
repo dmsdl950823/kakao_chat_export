@@ -1,4 +1,4 @@
-.chart-list {
+.chat-list-wrap {
   padding: 20px;
   font-size: 13px;
   color: #333;
@@ -6,21 +6,27 @@
   margin: 0 auto;
 }
 
-.-list {
+.-chat-list { margin-bottom: 1vh; }
+
+.-checkbox-label {
+  display: block;
+  position: relative;
+}
+
+.-chat {
   font-size: 14px;
   display: flex;
+  border: skyblue;
 
   .-profile {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 5px;
   }
 
   .-image {
     width: 40px;
     height: 40px;
-    /* margin-top: 2px; */
     margin-right: 10px;
     border-radius: 15px;
     background-color: #CCC;
@@ -31,31 +37,32 @@
     line-height: 25px;
   }
 
-  .-chat {
+  .-textarea {
     display: inline-block;
     padding: 15px;
     background-color: #ccc;
-    margin-bottom: 10px;
     border-radius: 10px;
     white-space: pre-wrap;
     height: auto;
     position: relative;
+    min-width: 200px;
+
+    textarea {
+      border: none;
+      resize: none;
+      font-style: normal;
+      background-color: transparent;
+      width: 200px;
+      
+      &:focus { outline: none; }
+    }
   }
   
   &.-me {
     justify-content: flex-end;
 
     .name { text-align: right; }
-    .-chat { background-color: rgb(255, 203, 124); }
-  }
-
-  textarea {
-    border: none;
-    resize: none;
-    font-style: normal;
-    background-color: transparent;
-    
-    &:focus { outline: none; }
+    .-textarea { background-color: rgb(255, 203, 124); }
   }
 }
 
@@ -73,18 +80,47 @@
 }
 
 .-checkbox-wrap {
-  border: 1px solid pink;
-  display: block;
-}
+  .-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  
+    &:checked ~ .checkmark {
+      background-color: #5ebdb7;
+      &:after { display: block; }
+    }
+  
+    &:hover {
+      input ~ .checkmark { background-color: #ccc; }
+    }  
+  }
+  
+  .checkmark {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    transition: .3s ease;
+    border: 2px solid #5ebdb7;
+    box-sizing: border-box;
 
-.-checkbox {
-  border: 1px solid red;
-  position: absolute;
-  bottom: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-left: 10px;
-  left: 100%;
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 5px;
+      top: 2px;
+      width: 5px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 1px 1px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
 }
-

@@ -1,5 +1,5 @@
-// import React, { useState } from 'react'
 import React from 'react'
+// import React from 'react'
 import '../style/chartlist.scss'
 
 type AppProps = {
@@ -13,65 +13,81 @@ type AppProps = {
 
 export default function Chat ({ item }: { item: AppProps }) {
   const { name, content, isMe, id, isComeOutText } = item
+  const label = `ID_${id}`
 
   // 채팅이 나인지 확인
-  const setListType = (isMe: boolean | undefined) => {
-    return {
-      className: isMe ? '-list -me' : '-list',
-      image: isMe ? null : <div className="-image"></div>,
-      checkboxWrap: isMe ? '-checkbox-wrap -me' : '-checkbox-wrap -default',
-      checkbox: isMe ? '-checkbox -me' : '-checkbox -default'
-    }
-  }
+  const wrapper = isMe ? '-chat -me' : '-chat'
+  const image = isMe ? null : (<div className="-image"></div>)
+  const labelClassName = isMe ? '-checkbox-label -me' : '-checkbox-label -default'
 
   // 'check' 여부
   // const [checked, setChecked] = useState<boolean>(false)
-  // const onChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setChecked(e.target.checked)
-  //   // console.log(e.target.checked, '진자 붕신')
-  // }
+  const onChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // setChecked(e.target.checked)
+    // console.log(checked, '진자 붕신')
+  }
 
-  const List = () => (
-    <li className={ setListType(isMe).className }>
-        { setListType(isMe).image }
+  /**
+   * "~들어왔습니다 / 나갔습니다" 표기일 경우
+   * @returns
+   */
+  const Comeout = () => (
+    <div className="-comeout">
+      <span>{ content }</span>
+    </div>
+  )
+
+  /**
+   * 카톡 목록
+   * @returns
+   */
+  const Chat = () => (
+    <div className={ wrapper }>
+        { image }
 
       <div className="-profile">
         <span className="name">{name}</span>
 
-        <div className="-chat">
+        <div className="-textarea">
           <textarea
             style={ { height: '200px' } }
             value={ content }
             readOnly
           />
-
-          <div className={ setListType(isMe).checkbox }>
-          </div>
         </div>
-        {/* /. 채팅 */}
       </div>
+    </div>
+  )
+
+  /**
+   * [Checkbox] 인풋 요소 (보이지 않게 숨기기)
+   * @returns
+   */
+  const Checkbox = () => (
+    <div className="-checkbox-wrap">
+      <input
+        className="-input"
+        type="checkbox"
+        id={ label }
+        onChange={ e => onChecked(e) }
+      />
+      <span className="checkmark"></span>
+    </div>
+  )
+
+  const List = () => (
+    <li className="-chat-list">
+      <label
+        htmlFor={ label }
+        className={ labelClassName }
+      >
+        { isComeOutText ? <Comeout /> : <Chat /> }
+        <Checkbox />
+      </label>
     </li>
   )
 
-  const Checkbox = () => (
-    <>
-      <label
-        htmlFor={`ID_${id}`}
-        className={ setListType(isMe).checkboxWrap }
-      >
-        { isComeOutText ? (<li className="-comeout"> <span>{ content }</span> </li>) : <List /> }
-
-        {/* <input
-          type="checkbox"
-          id={`ID_${id}`}
-          onChange={e => onChecked(e)}
-        /> */}
-        {/* style={{ display: 'none' }} */}
-      </label>
-    </>
-  )
-
   return (
-    <Checkbox />
+    <List />
   )
 }

@@ -88,9 +88,8 @@ export default function Home () {
 
   return (
     <div>
-      <ul className="chart-list">
+      <ul className="chat-list-wrap">
         { listItems }
-
       </ul>
     </div>
   )
