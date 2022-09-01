@@ -1,11 +1,53 @@
-.chat-list-wrap {
-  padding: 20px;
-  font-size: 13px;
-  color: #333;
-  width: 60%;
-  margin: 0 auto;
+$center-width: 60%;
+$option-height: 80px;
+$ad-height: 150px;
+
+.chat-list-wrapper {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
+.-chat-list-option {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: $option-height;
+  
+  .-full-width {
+    border: 1px solid red;
+    width: $center-width;
+    margin: 0 auto;
+    height: 100%;
+  }
+}
+
+.chat-list-wrap {
+  margin-top: $option-height;
+  padding: 0 8px;
+  height: 70%;
+  overflow: auto;
+
+  &-center {
+    border: 1px solid blue;
+    width: $center-width;
+    display: block;
+    margin: 0 auto;
+    // padding: 20px;
+    // margin-top: 10vh;
+    // font-size: 13px;
+    // color: #333;
+    // margin: 0 auto;
+    // height: 80vh;
+    // width: 60%;
+    // overflow: auto;
+  }
+}
+
+.ad {
+  border: 1px solid red;
+  height: $ad-height;
+}
 .-chat-list { margin-bottom: 1vh; }
 
 .-checkbox-label {

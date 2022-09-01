@@ -55,6 +55,20 @@ const setChatList = ({ showComeOut, useMyId, myId, chats }: Ingredient) => {
   return result
 }
 
+/**
+ * option 설정 (체크박스 등)
+ * @returns
+ */
+function Options () {
+  return (
+    <div className="-chat-list-option">
+      <div className="-full-width">
+        ㅇㅅㅇㅇㅅㅇ
+      </div>
+    </div>
+  )
+}
+
 export default function Home () {
   // eslint-disable-next-line
   const { showComeOut, useMyId, myId, raw } = useSelector((state: any) => ({
@@ -87,10 +101,16 @@ export default function Home () {
   }, [state])
 
   return (
-    <div>
-      <ul className="chat-list-wrap">
-        { listItems }
-      </ul>
+    <div className='chat-list-wrapper'>
+      <Options />
+
+      <div className="chat-list-wrap">
+        <ul className="chat-list-wrap-center">
+          { listItems }
+        </ul>
+      </div>
+
+      <div className="ad">광고</div>
     </div>
   )
 }
