@@ -19,6 +19,8 @@ $ad-height: 150px;
     width: $center-width;
     margin: 0 auto;
     height: 100%;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -27,20 +29,13 @@ $ad-height: 150px;
   padding: 0 8px;
   height: 70%;
   overflow: auto;
+  border: 1px solid blue;
 
   &-center {
-    border: 1px solid blue;
+    border: 1px solid skyblue;
     width: $center-width;
     display: block;
     margin: 0 auto;
-    // padding: 20px;
-    // margin-top: 10vh;
-    // font-size: 13px;
-    // color: #333;
-    // margin: 0 auto;
-    // height: 80vh;
-    // width: 60%;
-    // overflow: auto;
   }
 }
 

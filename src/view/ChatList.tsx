@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import Chat from '../component/Chat'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router'
+import { setUseCheckbox } from '../store/chatOption'
 
 type Ingredient = {
   showComeOut: boolean
@@ -17,6 +18,7 @@ type ChatType = {
   createTime: string
   isMe?: boolean | undefined
   isComeOutText?: boolean | undefined
+  useCheckbox?: boolean
 }
 
 /**
@@ -55,32 +57,38 @@ const setChatList = ({ showComeOut, useMyId, myId, chats }: Ingredient) => {
   return result
 }
 
-/**
- * option 설정 (체크박스 등)
- * @returns
- */
-function Options () {
-  return (
-    <div className="-chat-list-option">
-      <div className="-full-width">
-        ㅇㅅㅇㅇㅅㅇ
-      </div>
-    </div>
-  )
-}
-
-export default function Home () {
+export default function ChatList () {
   // eslint-disable-next-line
-  const { showComeOut, useMyId, myId, raw } = useSelector((state: any) => ({
+  const { showComeOut, useMyId, myId, raw, useCheckbox } = useSelector((state: any) => ({
     showComeOut: state.options.showComeOut, // '들어왔습니다/나갔습니다' 사용할지 / 안할지 => 기본으로 사용 안함(false)
     useMyId: state.options.useMyId, // 사용자 (나) 를 사용할 것인지 확인 => 기본적으로 사용 안함 (false)
     myId: state.options.myId, // 사용자 (나) 의 이름
-    raw: state.files.raw // 저장된 파일
+    raw: state.files.raw, // 저장된 파일
+    useCheckbox: state.chatOptions.useCheckbox // chat에 체크박스를 사용할것인지?
   }))
+
+  const dispatch = useDispatch()
 
   const chats = typeof raw === 'string' ? raw.split('"\n20')?.splice(1) : raw // column 제거
   const numbers = setChatList({ showComeOut, useMyId, myId, chats })
 
+  /**
+   * option 설정 (체크박스 등)
+   * @returns
+   */
+  const Options = () => {
+    return (
+      <div className="-chat-list-option">
+        <div className="-full-width">
+          <button onClick={ () => dispatch(setUseCheckbox(!useCheckbox)) }>체크박스로 선택하기</button>
+        </div>
+      </div>
+    )
+  }
+
+  /**
+   * List 아이템
+   */
   const listItems = numbers.map((data: ChatType) => {
     return (
       <Chat
@@ -110,7 +118,7 @@ export default function Home () {
         </ul>
       </div>
 
-      <div className="ad">광고</div>
+      {/* <div className="ad">광고</div> */}
     </div>
   )
 }

@@ -1,19 +1,24 @@
 import React from 'react'
-// import React from 'react'
+import { useSelector } from 'react-redux'
 import '../style/chartlist.scss'
 
-type AppProps = {
+type ChatProps = {
   id: number
   name: string
   content: string
   createTime: string
   isMe?: boolean | undefined
   isComeOutText?: boolean | undefined
+  useCheckbox?: boolean | undefined
 }
 
-export default function Chat ({ item }: { item: AppProps }) {
+export default function Chat ({ item }: { item: ChatProps }) {
   const { name, content, isMe, id, isComeOutText } = item
   const label = `ID_${id}`
+
+  // chat에 체크박스를 사용할것인지?
+  // eslint-disable-next-line
+  const { useCheckbox } = useSelector((state: any) => ({ useCheckbox: state.chatOptions.useCheckbox }))
 
   // 채팅이 나인지 확인
   const wrapper = isMe ? '-chat -me' : '-chat'
@@ -83,7 +88,7 @@ export default function Chat ({ item }: { item: AppProps }) {
         className={ labelClassName }
       >
         { isComeOutText ? <Comeout /> : <Chat /> }
-        <Checkbox />
+        { useCheckbox ? <Checkbox /> : null}
       </label>
     </li>
   )
