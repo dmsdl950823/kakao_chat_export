@@ -20,3 +20,10 @@ const App: React.FC = () => {
 }
 
 export default App
+
+/**
+ * 구현해야할것
+ * 1. 날짜 지정 기능
+ * 2. Throttle 해서 필요한 데이터만 노출
+ * 3.
+ */

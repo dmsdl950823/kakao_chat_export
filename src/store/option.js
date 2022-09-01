@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  setDate: false, // 날짜 지정여부 선택
   showComeOut: false, // '들어왔습니다/나갔습니다' 사용할지 / 안할지 => 기본으로 사용 안함(false)
   useMyId: false, // 사용자 (나) 를 사용할 것인지 확인
   myId: undefined // 사용자 (나) 의 이름
@@ -10,6 +11,14 @@ export const optionSlice = createSlice({
   name: 'options',
   initialState,
   reducers: {
+    /**
+     * 날짜 지정여부 선택
+     * @param {*} state
+     * @param {*} action
+     */
+    toggleSetDate: (state, action) => {
+      state.setDate = action.payload
+    },
     /**
      * 들어왔습니다/나갔습니다 설정
      * @param {*} state
@@ -37,5 +46,5 @@ export const optionSlice = createSlice({
   }
 })
 
-export const { toggleShowComeOut, toggleUseMyId, setMyId } = optionSlice.actions
+export const { toggleSetDate, toggleShowComeOut, toggleUseMyId, setMyId } = optionSlice.actions
 export default optionSlice.reducer

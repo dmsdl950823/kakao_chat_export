@@ -22,6 +22,7 @@ export default function Chat ({ item }: { item: AppProps }) {
 
   // 'check' 여부
   // const [checked, setChecked] = useState<boolean>(false)
+  // eslint-disable-next-line
   const onChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     // setChecked(e.target.checked)
     // console.log(checked, '진자 붕신')
