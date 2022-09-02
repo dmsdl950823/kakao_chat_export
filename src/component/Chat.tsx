@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import '../style/chartlist.scss'
 
@@ -12,7 +12,7 @@ type ChatProps = {
   useCheckbox?: boolean | undefined
 }
 
-export default function Chat ({ item }: { item: ChatProps }) {
+export default function Chat ({ item, onChecked }: { item: ChatProps, onChecked: (value: boolean) => void }) {
   const { name, content, isMe, id, isComeOutText } = item
   const label = `ID_${id}`
 
@@ -26,11 +26,11 @@ export default function Chat ({ item }: { item: ChatProps }) {
   const labelClassName = isMe ? '-checkbox-label -me' : '-checkbox-label -default'
 
   // 'check' 여부
-  // const [checked, setChecked] = useState<boolean>(false)
   // eslint-disable-next-line
-  const onChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // const [checked, setChecked] = useState<boolean>(false)
+  const onCheckedEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     // setChecked(e.target.checked)
-    // console.log(checked, '진자 붕신')
+    onChecked(e.target.checked)
   }
 
   /**
@@ -47,23 +47,34 @@ export default function Chat ({ item }: { item: ChatProps }) {
    * 카톡 목록
    * @returns
    */
-  const Chat = () => (
-    <div className={ wrapper }>
-        { image }
+  const Chat = () => {
+    const myRef = useRef<HTMLTextAreaElement>(null)
 
-      <div className="-profile">
-        <span className="name">{name}</span>
+    // textarea 자동 높이 설정
+    useEffect(() => {
+      if (myRef.current !== null) {
+        myRef.current.style.height = (myRef.current.scrollHeight) + 'px'
+      }
+    }, [myRef])
 
-        <div className="-textarea">
+    return (
+      <div className={ wrapper }>
+          { image }
+
+        <div className="-profile">
+          <span className="name">{name}</span>
+
+          <div className="-textarea">
           <textarea
-            style={ { height: '200px' } }
+            ref={ myRef }
             value={ content }
             readOnly
           />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   /**
    * [Checkbox] 인풋 요소 (보이지 않게 숨기기)
@@ -75,7 +86,7 @@ export default function Chat ({ item }: { item: ChatProps }) {
         className="-input"
         type="checkbox"
         id={ label }
-        onChange={ e => onChecked(e) }
+        onChange={ e => onCheckedEvent(e) }
       />
       <span className="checkmark"></span>
     </div>

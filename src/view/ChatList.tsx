@@ -37,7 +37,7 @@ const setChatList = ({ showComeOut, useMyId, myId, chats }: Ingredient) => {
     const chat = chats[i]
 
     const string = split(chat.replace(/"/g, ''))
-    const content = string[2].replace(/\n/g, '&#13;')
+    const content = string[2] // .replace(/\n/g, '\n')
     const object: ChatType = { id: i, createTime: '20' + string[0], name: string[1], content, isMe: false }
     const showComeOutText = /들어왔습니다|나갔습니다/g.test(object.content)
     const idTest = new RegExp(String(myId)) // 내 아이디와 일치하는 내용 확인
@@ -86,6 +86,10 @@ export default function ChatList () {
     )
   }
 
+  const onChecked = (value: boolean) => {
+    console.log(value)
+  }
+
   /**
    * List 아이템
    */
@@ -94,6 +98,7 @@ export default function ChatList () {
       <Chat
         key={ `test_${data.id}` }
         item={ data }
+        onChecked={ onChecked }
       />
     )
   })
